@@ -24,16 +24,16 @@ const CompanyList = ({ className }: Props) => {
       if (active !== "all") searchString += `&status=${active}`;
       return searchString;
     },
-    fetcher,
+    fetcher
   );
 
   const companies = data ? data.flatMap((page) => page?.companies) : [];
   const isLoadingMore = isLoading || (size > 0 && data && typeof data[size - 1] === "undefined");
   const isEmpty = companies.length === 0;
-  const isReachingEnd = isEmpty || (data && data[data.length - 1]?.companies.length < 25);
+  const isReachingEnd = isEmpty || (data && !data[data.length - 1]?.nextPage);
 
   const { ref, inView } = useInView({
-    threshold: 0.4,
+    threshold: 0.4
   });
 
   useEffect(() => {

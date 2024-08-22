@@ -2,6 +2,7 @@ export interface TodoResponse {
   todos: Todo[];
   numTodos: number;
   next: string;
+  nextCursor: string;
   limit: number;
 }
 
